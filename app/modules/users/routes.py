@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from ...models import User
 from app.extensions import db
 
-users_bp = Blueprint('users', __name__, url_prefix='/users')
+users_bp = Blueprint('users', __name__, url_prefix='/api/users')
 
 @users_bp.route('', methods=['GET'])
 def list_users():

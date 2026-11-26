@@ -2,8 +2,11 @@ Flask
 Flask-SQLAlchemy
 Flask-Migrate
 Flask-JWT-Extended
+Flask-Mail
 Flask-Marshmallow
 marshmallow
 PyMySQL
 python-dotenv
 gunicorn
+openpyxl
+pytest

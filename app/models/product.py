@@ -13,6 +13,10 @@ class Product(db.Model):
     name = Column(String(255), nullable=False)
     description = Column(Text, nullable=True)
     price = Column(Float, nullable=False, default=0.0)
+    # Số lượng còn trong kho.
+    # default: giá trị Python dùng khi tạo product mới mà không gán quantity.
+    # server_default: giá trị DB dùng, để các product đã có sẵn nhận 0 khi thêm cột.
+    quantity = Column(Integer, nullable=False, default=0, server_default='0')
     # Many‑to‑many with Category
     categories = relationship(
         'Category',
