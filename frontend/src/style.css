@@ -1,0 +1,268 @@
+/* Màu và khoảng cách dùng chung. Đổi ở đây là cả app đổi theo. */
+:root {
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  --color-border: #e2e5ea;
+  --color-text: #1d2330;
+  --color-muted: #667085;
+  --color-primary: #2f5bea;
+  --color-primary-text: #ffffff;
+  --color-error-bg: #fdecec;
+  --color-error-text: #a11c1c;
+  --radius: 8px;
+  --font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  color-scheme: light dark;
+}
+
+/* Máy đang để giao diện tối thì đổi bảng màu */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #12151b;
+    --color-surface: #1b1f27;
+    --color-border: #2c323d;
+    --color-text: #e6e9ef;
+    --color-muted: #98a1b3;
+    --color-primary: #6b8cff;
+    --color-primary-text: #0b1020;
+    --color-error-bg: #3a1a1a;
+    --color-error-text: #ffb4b4;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Khung chung: thanh trên cùng và phần nội dung */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 24px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.topnav a {
+  color: var(--color-muted);
+  text-decoration: none;
+}
+
+/* Vue Router tự thêm class này vào link của trang đang mở */
+.topnav a.router-link-active {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.app-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Tiêu đề trang */
+.page-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.page-subtitle {
+  margin: 4px 0 0;
+  color: var(--color-muted);
+}
+
+/* Ba ô tổng hợp */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.summary-label {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.summary-value {
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Thanh lọc */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 140px;
+  font-size: 13px;
+  color: var(--color-muted);
+}
+
+.field-wide {
+  flex: 1;
+  min-width: 200px;
+}
+
+.field input,
+.field select {
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Nút bấm */
+.button {
+  padding: 8px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-primary {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+}
+
+/* Thông báo lỗi */
+.alert-error {
+  margin: 16px 0 0;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+/* Bảng sản phẩm. overflow-x: màn hình hẹp thì bảng cuộn ngang, không vỡ khung */
+.table-wrap {
+  margin-top: 16px;
+  overflow-x: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.product-table th {
+  color: var(--color-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.product-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.column-id {
+  width: 64px;
+  color: var(--color-muted);
+}
+
+/* Cột số canh phải và các chữ số rộng bằng nhau để dễ so cột.
+   Viết kèm .product-table để mạnh hơn luật text-align: left ở trên. */
+.product-table .column-number {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.product-name {
+  font-weight: 600;
+}
+
+.product-description {
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.product-table .table-message {
+  padding: 32px 14px;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* Phân trang */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.pagination-info {
+  color: var(--color-muted);
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: 8px;
+}
