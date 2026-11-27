@@ -12,6 +12,8 @@ export default defineConfig({
     // Proxy: trình duyệt gọi /api/... ở 5173, Vite tự chuyển sang 8080 giùm.
     proxy: {
       '/api': 'http://localhost:8080',
+      // /health của Flask nằm ngoài /api nên khai thêm, để chấm trạng thái API chạy được lúc dev
+      '/health': 'http://localhost:8080',
     },
   },
 })
